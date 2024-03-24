@@ -1,0 +1,38 @@
+﻿<Window x:Class="ImageViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageViewer"
+        mc:Ignorable="d"
+        Title="ImageViewer" Height="450" Width="800" KeyDown="Window_KeyDown">
+    <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch">
+        <StackPanel Orientation="Horizontal" Background="#FF2C2C2C" Height="44" VerticalAlignment="Top">
+            <!-- open -->
+
+            <!-- close -->
+            <Button x:Name="OpenButton" Style="{StaticResource ImageButtonStyle}" IsDefault="True" Height="36" VerticalAlignment="Top" Click="OpenButton_Click" Width="36">
+                <Image Source="/img/FolderWhite.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Height="32" RenderTransformOrigin="0,0.079" Stretch="Fill" OpacityMask="Black"/>
+            </Button>
+
+            <!-- close -->
+            <Button x:Name="CloseButton" Style="{StaticResource ImageButtonStyle}" VerticalAlignment="Top" Height="36" Width="36">
+                <Image Height="32" Width="32" Source="/img/TrashBoxWhite.png" OpacityMask="Red"/>
+            </Button>
+        </StackPanel>
+        <Grid Margin="0,44,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="97*"/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="FileViewer" d:ItemsSource="{d:SampleData ItemCount=5}" Width="120" HorizontalAlignment="Left" MouseDoubleClick="FileViewer_MouseDoubleClick" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Image x:Name="Image1" Margin="106,0,10,0" OpacityMask="#FFBF0000" Source="/img/folder.png" Grid.Column="1"/>
+        </Grid>
+    </Grid>
+</Window>
